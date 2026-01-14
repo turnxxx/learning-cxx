@@ -9,8 +9,12 @@ struct FibonacciCache {
 
 // TODO: 实现正确的缓存优化斐波那契计算
 static unsigned long long fibonacci(FibonacciCache &cache, int i) {
-    for (; false; ++cached) {
-        cache[cached] = cache[cached - 1] + cache[cached - 2];
+    for (cache.cached = 0; cache.cached < 16; ++cache.cached) {
+        if (cache.cached < 2) {
+            cache.cache[cache.cached] = cache.cached;
+        } else {
+            cache.cache[cache.cached] = cache.cache[cache.cached - 1] + cache.cache[cache.cached - 2];
+        }
     }
     return cache.cache[i];
 }
